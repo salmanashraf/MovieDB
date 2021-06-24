@@ -1,3 +1,12 @@
 <resources>
-    <string name="app_name">My Application</string>
+    <string name="app_name">MovieList</string>
+    <string name="language">LANGUAGE</string>
+    <string name="duration">DURATION</string>
+    <string name="booknow">Book now</string>
+    <string name="synopsis">SYNOPSIS</string>
+    <string name="cast">CAST</string>
+    <string name="release_date">RELEASE DATE</string>
+    <string name="genre">GENRE</string>
+    <string name="loading">Please wait...</string>
+    <string name="error_internet">Internet is not working...</string>
 </resources>
