@@ -17,9 +17,11 @@ import com.news.myapplication.R
 import com.news.myapplication.models.movieDetails.Genre
 import com.news.myapplication.models.movieDetails.Language
 import com.news.myapplication.models.movieDetails.MovieDetails
+import com.news.myapplication.utils.loadImage
 import com.news.myapplication.viewmodels.MoviesDetailViewModel
 import kotlinx.android.synthetic.main.activity_movie_details.*
 import io.reactivex.disposables.CompositeDisposable
+import kotlinx.android.synthetic.main.movie_items.view.*
 
 class MovieDetailActivity : AppCompatActivity() {
 
@@ -59,7 +61,7 @@ class MovieDetailActivity : AppCompatActivity() {
         movie_release_date.text = movieDetails?.releaseDate
         moviedescription.text = movieDetails?.overview
         runtime.text = String.format("%s min", movieDetails?.runtime)
-        setImageView("${BuildConfig.IMAGE_URL}${movieDetails.posterPath}")
+        image.loadImage("${BuildConfig.IMAGE_URL}${movieDetails.posterPath}")
         movieGenre.text = movieDetails.genres.genreToCommaSeparatedString()
         language.text = movieDetails.spokenLanguages.languageToCommaSeparatedString()
 
@@ -70,32 +72,6 @@ class MovieDetailActivity : AppCompatActivity() {
         }
     }
 
-    fun setImageView(url: String) {
-        Glide.with(this)
-            .load(url)
-            .listener(object : RequestListener<Drawable> {
-                override fun onLoadFailed(
-                    e: GlideException?,
-                    model: Any?,
-                    target: Target<Drawable>?,
-                    isFirstResource: Boolean
-                ): Boolean {
-                    return false
-                }
-
-                override fun onResourceReady(
-                    resource: Drawable?,
-                    model: Any?,
-                    target: Target<Drawable>?,
-                    dataSource: DataSource?,
-                    isFirstResource: Boolean
-                ): Boolean {
-                    return false
-                }
-
-            })
-            .into(image)
-    }
 
     fun List<Genre>.genreToCommaSeparatedString(): String {
         return this.joinToString(", ", transform = { it.name })
