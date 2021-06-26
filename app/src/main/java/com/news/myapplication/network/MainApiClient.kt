@@ -36,7 +36,7 @@ object MainApiClient {
         return retrofitInstance
     }
 
-    fun getMoviesApi(): ApiServices {
+    fun execute(): ApiServices {
         return movieApi
     }
 
