@@ -73,7 +73,7 @@
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="@dimen/_10sdp"
             android:singleLine="true"
-            android:textColor="@color/colorGray"
+            android:textColor="@color/teal_700"
             tools:text="12-12-2020" />
     </LinearLayout>
 </androidx.cardview.widget.CardView>
