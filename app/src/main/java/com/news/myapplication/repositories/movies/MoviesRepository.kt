@@ -3,6 +3,7 @@ package com.news.myapplication.repositories.movies
 import androidx.lifecycle.LiveData
 import androidx.paging.LivePagedListBuilder
 import androidx.paging.PagedList
+import com.news.myapplication.MOVIES_PER_PAGE
 import com.news.myapplication.models.movieDetails.MovieDetails
 import com.news.myapplication.output.SimpleOutput
 import com.news.myapplication.models.movies.MovieModel
@@ -33,7 +34,7 @@ class MoviesRepository() {
 
         val config = PagedList.Config.Builder()
             .setEnablePlaceholders(false)
-            .setPageSize(20)
+            .setPageSize(MOVIES_PER_PAGE)
             .build()
 
         movieModelPagedList = LivePagedListBuilder(moviesDataSourceFactory, config).build()

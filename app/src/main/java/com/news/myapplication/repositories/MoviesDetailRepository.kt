@@ -27,7 +27,7 @@ class MoviesDetailRepository private constructor() {
     fun getMovies(movieDisposable: CompositeDisposable, movieID: Int) {
         try {
             movieDisposable.add(
-                MainApiClient.getMoviesApi()
+                MainApiClient.execute()
                     .getMovieDetails(movieID)
                     .subscribeOn(Schedulers.io())
                     .subscribe(

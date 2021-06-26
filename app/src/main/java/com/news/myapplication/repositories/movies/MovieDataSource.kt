@@ -4,7 +4,6 @@ import androidx.paging.PageKeyedDataSource
 import com.news.myapplication.FIRST_PAGE
 import com.news.myapplication.models.movieDetails.MovieDetails
 import com.news.myapplication.models.movies.MovieModel
-import com.news.myapplication.network.ApiServices
 import com.news.myapplication.network.MainApiClient
 import com.news.myapplication.output.SimpleOutput
 import io.reactivex.disposables.CompositeDisposable
@@ -24,7 +23,7 @@ class MovieDataSource(
     ) {
         loading(true)
         compositeDisposable.add(
-            MainApiClient.getMoviesApi()
+            MainApiClient.execute()
             .getMovies(page)
                 .subscribeOn(Schedulers.io())
                 .subscribe(
@@ -41,7 +40,7 @@ class MovieDataSource(
     override fun loadAfter(params: LoadParams<Int>, callback: LoadCallback<Int, MovieModel>) {
         loading(true)
         compositeDisposable.add(
-            MainApiClient.getMoviesApi().getMovies(params.key)
+            MainApiClient.execute().getMovies(params.key)
                 .subscribeOn(Schedulers.io())
                 .subscribe(
                     {
